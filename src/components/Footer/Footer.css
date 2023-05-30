@@ -1,0 +1,10 @@
+
+.footer-box{
+    padding-top: 30px;
+    padding-left: 30px;
+    height: 100px;
+    align-items: end;
+    text-align: start;
+    font-size: larger;
+    background-color: grey;
+}
