@@ -1,15 +1,16 @@
 
 
 .header-box{
-    padding-top: 45px;
+    padding-top: 50px;
+    padding-left: 30px;
     height: 100px;
-    text-align: center;
-    font-size: x-large;
+    text-align: left;
+    font-size: xx-large;
     background-color: grey;
 }
 
 .home-link{
     text-decoration: none;
-    color: black;
+    color:white;
     font-weight: bolder;
 }

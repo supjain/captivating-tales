@@ -13,6 +13,7 @@ const  Footer = () => {
       Contacts
     </Link>
     </div>
+    <div className='copyright-claim'><p>© 2023 - Captivating Tales</p></div>
   </div>
   );
 }
