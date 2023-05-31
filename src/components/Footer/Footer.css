@@ -1,26 +1,25 @@
 
 .footer-box{
-    padding-top: 30px;
-    padding-left: 30px;
-    height: 100px;
-    align-items: end;
-    text-align: start;
     font-size: larger;
-    background-color: grey;
+    padding-top: 1.5em;
+    padding-left: 1.5em;
+    height: 8vh;
+    text-align: start;
+    background-color: var(--grey);
 }
 .contact-link{
     text-decoration: none;
-    color: white;
+    color: var(--white);
     font-weight: bold;
 }
 .about-link{
     text-decoration: none;
-    color: white;
+    color:var(--white);
     font-weight: bold;
 }
 
 .copyright-claim{
     text-align: center;
-    color: white;
+    color:var(--white);
     font-style: italic;
 }
