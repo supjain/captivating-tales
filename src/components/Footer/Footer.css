@@ -1,0 +1,25 @@
+
+.footer-box{
+    font-size: larger;
+    padding-top: 1.5em;
+    padding-left: 1.5em;
+    height: 8vh;
+    text-align: start;
+    background-color: var(--grey);
+}
+.contact-link{
+    text-decoration: none;
+    color: var(--white);
+    font-weight: bold;
+}
+.about-link{
+    text-decoration: none;
+    color:var(--white);
+    font-weight: bold;
+}
+
+.copyright-claim{
+    text-align: center;
+    color:var(--white);
+    font-style: italic;
+}

@@ -1,0 +1,16 @@
+
+
+.header-box{
+    font-size: xx-large;
+    padding-top: 1.5em;
+    padding-left: 1.5em;
+    height: 8vh;
+    text-align: left;
+    background-color: var(--grey);
+}
+
+.home-link{
+    text-decoration: none;
+    color:var(--white);
+    font-weight: bolder;
+}
