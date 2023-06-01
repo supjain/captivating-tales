@@ -1,11 +1,18 @@
 
 .footer-box{
-    font-size: larger;
-    padding-top: 1.5em;
-    padding-left: 1.5em;
-    height: 8vh;
-    text-align: start;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--grey);
+    padding:2rem 0 2rem 2rem; 
+}
+
+.footer-left{
+    display:flex;
+    gap:2rem
+}
+.footer-right{
+    padding-right: 2rem;
 }
 .contact-link{
     text-decoration: none;
