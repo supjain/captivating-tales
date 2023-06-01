@@ -1,3 +1,9 @@
 .blog-details-page{
     height: 84vh;
+    padding-left: 2rem;
 }
+
+.blog-details-page hr{
+    border-top: 0.188rem dotted rgb(16, 17, 19);
+    height: 0.188rem;
+   }
