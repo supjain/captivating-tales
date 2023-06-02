@@ -6,16 +6,6 @@ import "./HomePage.css";
 const HomePage = () => {
   return (
     <div className="home-page">
-      {/* <div className="home-page blog">
-        {blogs &&
-          blogs.map((blog) => (
-            <BlogCard
-              title={blog.title}
-              author={blog.author}
-              date={blog.date}
-            />
-          ))}
-      </div> */}
       <div className="pagination">
         <BasicPagination />
       </div>
