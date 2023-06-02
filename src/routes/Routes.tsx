@@ -14,7 +14,7 @@ const routes = () =>{
         <Header/>
           <Routes>
            <Route path="/"  element={<HomePage/>}/>
-           <Route path="/blogdetails" element={<BlogDetails/>}/>
+           <Route path="/blogdetails/:id" element={<BlogDetails/>}/>
            <Route path="/about" element={<About/>}/>
            <Route path="/contacts" element={<Contacts/>}/>
          </Routes>
