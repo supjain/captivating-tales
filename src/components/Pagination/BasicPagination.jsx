@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BlogData from "../../utils/BlogData";
+import { Link } from 'react-router-dom';
 import "./BasicPagination.css";
 
 const BasicPagination = () => {
@@ -19,6 +20,7 @@ const BasicPagination = () => {
       <div className="a">
         {currentBlogs.map((blog, index) => (
           <div key={index} className="blog-card">
+            <Link to={`/blogdetails/${blog.id}`}>{blog.title}</Link>
             <h2>{blog.title}</h2>
 
             <p>{blog.author}</p>

@@ -1,16 +1,13 @@
 
-
 .header-box{
-    font-size: xx-large;
-    padding-top: 1.5em;
-    padding-left: 1.5em;
-    height: 8vh;
-    text-align: left;
+    display: flex;
     background-color: var(--grey);
+    padding:2rem 0 2rem 2rem; 
 }
 
 .home-link{
     text-decoration: none;
     color:var(--white);
     font-weight: bolder;
+    font-size: x-large;
 }
