@@ -25,24 +25,24 @@ const blogs = [
     date: "Jan 19, 2023",
   },
   {
-    title: "A Productive Rant About Joe",
-    author: "Chimo Ivan",
-    date: "May 8, 2023",
+    title: "How Much Should You Be Spending on AQI?",
+    author: "Shiori Aod",
+    date: "May 29, 2023",
   },
   {
-    title: "A Productive Rant About Joe",
-    author: "Chimo Ivan",
-    date: "May 8, 2023",
+    title: "The Worst Advice We've Ever Heard About Budget",
+    author: "Fernanda Agustín",
+    date: "Apr 8, 2023",
   },
   {
-    title: "A Productive Rant About Joe",
-    author: "Chimo Ivan",
-    date: "May 8, 2023",
+    title: "8 Effective Coding Elevator Pitches",
+    author: "Tadashi Osgar",
+    date: "Nov 18, 2023",
   },
   {
-    title: "A Productive Rant About Joe",
-    author: "Chimo Ivan",
-    date: "May 8, 2023",
+    title: "The History of Adobe",
+    author: "Zacchaeus Bill",
+    date: "Sept 25, 2023",
   },
 ];
 export default blogs;
