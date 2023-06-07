@@ -16,11 +16,7 @@ const BlogDetails = () => {
       const response = await fetch(`${GET_URI}/${id}`);
       const data = await response.json();
       setBlog(data);
-      console.log(blog);
-    } catch (error) {
-      console.log(error);
-      console.log(blog);
-    }
+    } catch (error) {}
   };
   const formattedTags = blog?.tags?.join(" ");
   return (
