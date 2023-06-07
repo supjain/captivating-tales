@@ -2,10 +2,41 @@
   width: 20.5rem;
   height: 12.5rem;
   text-align: center;
-  background-color: #f0f0f0;
+  background-color:var(--offwhite);
   margin: 0.625rem;
   padding: 1.25rem;
-  border-radius: 0.313rem;
+  border-radius: 1rem;
   box-shadow: 0rem 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   float: left;
 }
+
+.blog-card:hover {
+  width: 20.5rem;
+  height: 12.5rem;
+  text-align: center;
+  background-color:var(--hover);
+
+}
+
+h1{
+  margin: 0;
+}
+
+.blog-link{
+  text-decoration: none;
+  color: var(--black);
+}
+
+.blog-title{
+  height: 5rem;
+  overflow: hidden;
+}
+
+.blog-description {
+  margin-top: 1rem;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+
