@@ -1,9 +1,11 @@
 //To have all the api calls segregated
 //Please add your api calls here
 
+import { FETCH_COMMENTS_BY_POST_ID } from "../Constants";
+
 const fetchCommentsByPostID = async (postId) => {
     try {
-      const response = await fetch(`https://dummyjson.com/comments/post/${postId}`);
+      const response = await fetch(`${FETCH_COMMENTS_BY_POST_ID}/${postId}`);
       const jsonData = await response.json();
       return jsonData;
     } catch (error) {
