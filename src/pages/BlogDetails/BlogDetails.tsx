@@ -1,8 +1,10 @@
 import { useParams } from 'react-router-dom';
-import './BlogDetails.css'
-import BlogData from '../../utils/BlogData';
 import { useEffect, useState } from 'react';
+
 import fetchCommentsByPostID from '../../utils/apis/api';
+import BlogData from '../../utils/BlogData';
+
+import './BlogDetails.css'
 
 const BlogDetails = () => {
   const { id } = useParams();

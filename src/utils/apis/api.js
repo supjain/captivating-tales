@@ -3,6 +3,7 @@
 
 import { FETCH_COMMENTS_BY_POST_ID } from "../Constants";
 
+//get comments by post id
 const fetchCommentsByPostID = async (postId) => {
     try {
       const response = await fetch(`${FETCH_COMMENTS_BY_POST_ID}/${postId}`);
