@@ -3,6 +3,9 @@
     display: flex;
     background-color: var(--grey);
     padding:2rem 0 2rem 2rem; 
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .home-link{
