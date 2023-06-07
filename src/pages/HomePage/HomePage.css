@@ -7,3 +7,11 @@
   align-items: center;
   justify-content: center;
 }
+
+
+.home-page-blogs{
+  display: grid;
+  grid-template-columns: 24rem 24rem 24rem 24rem ;
+  grid-row-gap: 2rem;
+  grid-column-gap:2rem;
+}
