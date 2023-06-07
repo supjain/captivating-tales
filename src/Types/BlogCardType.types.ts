@@ -1,5 +1,5 @@
 export type IBlogCardProps = {
-    author: string;
+    userId: string;
     title: string;
     id : string;
     body: string;

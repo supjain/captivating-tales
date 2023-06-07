@@ -9,31 +9,27 @@ const HomePage = () => {
   const [blogs,setBlogs] = useState([]);
 
   useEffect(()=>{
-    fetchPosts();
+    try {
+      fetchPosts();
+    } catch (error) {
+      console.log(error)
+    }
   },[])
 
   const fetchPosts = async () => {
     const data=await fetch(POST_URI.concat('&select=title,body,userId'));
     const postDetails= await data.json();
-
-    for (let index = 0; index < postDetails.posts.length; index++) {
-
-    const element = postDetails.posts[index];
-     const data1 = await fetch(USER_URI.concat(element.userId));
-     const userDetails= await data1.json();
-     element['name']=userDetails.firstName.concat(' ').concat(userDetails.maidenName).concat(' ').concat(userDetails.lastName);
-
-    }
     setBlogs(postDetails.posts);
   }
 
   return (
     <div className="home-page">
       <div className="home-page-blogs">
-       {blogs && blogs.map((blog :any) =>{
-         return <BlogCard key={blog.id} title={blog.title} author={blog.name} body={blog.body} id={blog.id}/>
-       })}
+       {blogs?blogs.map((blog :any) =>{
+         return <BlogCard key={blog.id} title={blog.title} userId={blog.userId} body={blog.body} id={blog.id}/>
+       }):<div className="home-page-eror">Request limit exceeded, try again after 60 sec </div>}
       </div>
+
     </div>
   );
 };
