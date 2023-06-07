@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import fetchCommentsByPostID from '../../utils/apis/api';
 import BlogData from '../../utils/BlogData';
+import { Comment } from './BlogDetails.types';
 
 import './BlogDetails.css'
 
@@ -11,9 +12,11 @@ const BlogDetails = () => {
   const [comments,setComments]=useState([])
   
   useEffect(() => {
-    fetchCommentsByPostID(id)
-      .then(jsonData => setComments(jsonData.comments))
-      .catch(error => console.error('Error fetching data:', error));
+    const fetchComments = async () => {
+        const jsonData = await fetchCommentsByPostID(id);
+        setComments(jsonData.comments);
+    };
+    fetchComments();
   }, [id]);
 
   const blogData=BlogData.filter((blog)=>(blog.id).toString()===id)
@@ -26,7 +29,7 @@ const BlogDetails = () => {
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     <div className="comments">
       <h4>Comments</h4>
-      {comments.length>0?comments.map((comment:any)=>{
+      {comments.length?comments.map((comment:Comment)=>{
         return ( <div className="comment">
         <h6>{comment?.user?.username}</h6>
         <p>{comment?.body}</p>
