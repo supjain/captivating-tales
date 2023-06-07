@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/captivating-tales/static/css/main.5431235a.css",
+    "main.css": "/captivating-tales/static/css/main.42438172.css",
     "main.js": "/captivating-tales/static/js/main.f2674612.js",
     "static/js/787.69b84a37.chunk.js": "/captivating-tales/static/js/787.69b84a37.chunk.js",
     "index.html": "/captivating-tales/index.html",
-    "main.5431235a.css.map": "/captivating-tales/static/css/main.5431235a.css.map",
+    "main.42438172.css.map": "/captivating-tales/static/css/main.42438172.css.map",
     "main.f2674612.js.map": "/captivating-tales/static/js/main.f2674612.js.map",
     "787.69b84a37.chunk.js.map": "/captivating-tales/static/js/787.69b84a37.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5431235a.css",
+    "static/css/main.42438172.css",
     "static/js/main.f2674612.js"
   ]
 }
