@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import fetchCommentsByPostID from "../../utils/apis/api";
+import { fetchCommentsByPostID } from "../../utils/apis/api";
 import { Blog, Comment } from "./BlogDetails.types";
 import { GET_URI } from "../../utils/Constants";
 

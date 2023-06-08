@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
+
 import BlogCard from "../../components/BlogCard/BlogCard";
-import { POST_URI, USER_URI } from "../../utils/Constants";
+import { POST_URI} from "../../utils/Constants";
+import { deletePostByID } from "../../utils/apis/api";
+import { Blog } from "../../Types/BlogCardType.types";
 
 import "./HomePage.css";
 
-interface Blog {
-  id: string;
-  title: string;
-  userId: string;
-  body: string;
-}
-
-const HomePage: React.FC = () => {
+const HomePage = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
@@ -28,6 +24,14 @@ const HomePage: React.FC = () => {
     setBlogs(postDetails.posts);
   };
 
+  const handleDeleteClick = async(id:string) => {
+  
+    const response = await deletePostByID(id);
+    if(response?.ok){
+setBlogs((prevBlogs: any[]) => prevBlogs.filter((blog) => blog.id !== id));
+      }
+    }
+
   return (
     <div className="home-page">
       <div className="home-page-blogs">
@@ -40,6 +44,7 @@ const HomePage: React.FC = () => {
                 userId={blog.userId}
                 body={blog.body}
                 id={blog.id}
+                handleDeleteClick={handleDeleteClick}
               />
             );
           })
