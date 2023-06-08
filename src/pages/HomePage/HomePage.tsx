@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert/Alert";
 
 import BlogCard from "../../components/BlogCard/BlogCard";
 import { POST_URI} from "../../utils/Constants";
@@ -9,6 +11,17 @@ import "./HomePage.css";
 
 const HomePage = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
+
+  //For Toast mesage
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+  //For Toast message
 
   useEffect(() => {
     try {
@@ -28,11 +41,13 @@ const HomePage = () => {
   
     const response = await deletePostByID(id);
     if(response?.ok){
-setBlogs((prevBlogs: any[]) => prevBlogs.filter((blog) => blog.id !== id));
+     setBlogs((prevBlogs: any[]) => prevBlogs.filter((blog) => blog.id !== id));
+     setOpen(true);
       }
     }
 
   return (
+    
     <div className="home-page">
       <div className="home-page-blogs">
         {blogs ? (
@@ -53,6 +68,13 @@ setBlogs((prevBlogs: any[]) => prevBlogs.filter((blog) => blog.id !== id));
             Request limit exceeded, try again after 60 sec{" "}
           </div>
         )}
+
+        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Post Deleted Successfully!
+         </Alert>
+        </Snackbar>
+
       </div>
     </div>
   );
