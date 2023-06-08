@@ -93,7 +93,7 @@ const HomePage: React.FC = () => {
         )}
       </div>
       {isLoading && (
-        <p className="a">
+        <p className="load-image">
           <img src="https://i.stack.imgur.com/hzk6C.gif"></img>
         </p>
       )}
