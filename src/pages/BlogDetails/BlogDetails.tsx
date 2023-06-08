@@ -1,47 +1,71 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import fetchCommentsByPostID from '../../utils/apis/api';
-import BlogData from '../../utils/BlogData';
-import { Comment } from './BlogDetails.types';
+import fetchCommentsByPostID from "../../utils/apis/api";
+import { Blog, Comment } from "./BlogDetails.types";
+import { GET_URI } from "../../utils/Constants";
 
-import './BlogDetails.css'
+import "./BlogDetails.css";
 
 const BlogDetails = () => {
   const { id } = useParams();
-  const [comments,setComments]=useState([])
-  
+  const [comments, setComments] = useState([]);
+  const [blog, setBlog] = useState<Blog | null>(null);
+
   useEffect(() => {
     const fetchComments = async () => {
-        const jsonData = await fetchCommentsByPostID(id);
-        setComments(jsonData.comments);
+      const jsonData = await fetchCommentsByPostID(id);
+      setComments(jsonData.comments);
     };
+
+    const fetchBlogDetails = async () => {
+      try {
+        const response = await fetch(`${GET_URI}/${id}`);
+        const data: Blog = await response.json();
+        setBlog(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     fetchComments();
+    fetchBlogDetails();
   }, [id]);
 
-  const blogData=BlogData.filter((blog)=>(blog.id).toString()===id)
-    return (
+  const formattedTags = blog?.tags.join(" ");
+
+  return (
     <div className="blog-details-page">
-    <h3>{blogData[0].title}</h3>
-    <hr />
-    <h5>Authored By: {blogData[0].author}</h5>
-    <h5>Published on: {blogData[0].date}</h5>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    <div className="comments">
-      <h4>Comments</h4>
-      {comments.length?comments.map((comment:Comment)=>{
-        return ( <div className="comment">
-        <h6>{comment?.user?.username}</h6>
-        <p>{comment?.body}</p>
+      {blog ? (
+        <>
+          <h3>{blog.title}</h3>
+          <hr />
+          <h5>Genre: {formattedTags ? formattedTags : <p>Loading...</p>}</h5>
+          <h5>Reactions: {blog.reactions}</h5>
+          <p>
+            <i>{blog.body}</i>
+          </p>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
+      <div className="comments">
+        <h4>Comments</h4>
+        {comments.length ? (
+          comments.map((comment: Comment) => {
+            return (
+              <div className="comment">
+                <h6>{comment?.user?.username}</h6>
+                <p>{comment?.body}</p>
+              </div>
+            );
+          })
+        ) : (
+          <p>Loading comments...</p>
+        )}
       </div>
-      )
-      }):
-      <p>Loading comments...</p>}
     </div>
-    </div>
-    );
-  }
-  
-  export default BlogDetails;
+  );
+};
 
-
+export default BlogDetails;
