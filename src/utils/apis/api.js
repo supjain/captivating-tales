@@ -17,18 +17,11 @@ export const fetchCommentsByPostID = async (postId) => {
   
   //delete post by id
   export const deletePostByID = async (postId) => {
-    try {
       const response = await fetch(`https://dummyjson.com/posts/${postId}`, {
         method: 'DELETE',
       });
-  
+
       if (response.ok) {
-        console.log('Post deleted successfully');
         return response; 
-      } else {
-        console.log('API call failed');
-      }
-    } catch (error) {
-      console.error('Error occurred while making the API call', error);
-    }
+      } 
   };
