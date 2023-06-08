@@ -13,6 +13,9 @@ interface Blog {
 
 const HomePage: React.FC = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     try {
@@ -26,6 +29,46 @@ const HomePage: React.FC = () => {
     const data = await fetch(POST_URI.concat("&select=title,body,userId"));
     const postDetails = await data.json();
     setBlogs(postDetails.posts);
+  };
+
+  const fetchMorePosts = async () => {
+    setIsLoading(true);
+
+    try {
+      const data = await fetch(
+        `${POST_URI}&page=${page}&select=title,body,userId`
+      );
+      const postDetails = await data.json();
+      const newBlogs = postDetails.posts;
+
+      if (newBlogs.length === 0) {
+        setHasMore(false);
+      } else {
+        setBlogs((prevBlogs) => [...prevBlogs, ...newBlogs]);
+        setPage((prevPage) => prevPage + 1);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
+      !isLoading &&
+      hasMore
+    ) {
+      fetchMorePosts();
+    }
   };
 
   return (
@@ -49,6 +92,11 @@ const HomePage: React.FC = () => {
           </div>
         )}
       </div>
+      {isLoading && (
+        <p className="a">
+          <img src="https://i.stack.imgur.com/hzk6C.gif"></img>
+        </p>
+      )}
     </div>
   );
 };
