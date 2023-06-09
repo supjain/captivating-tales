@@ -4,7 +4,7 @@
 import { FETCH_COMMENTS_BY_POST_ID } from "../Constants";
 
 //get comments by post id
-const fetchCommentsByPostID = async (postId) => {
+export const fetchCommentsByPostID = async (postId) => {
     try {
       const response = await fetch(`${FETCH_COMMENTS_BY_POST_ID}/${postId}`);
       const jsonData = await response.json();
@@ -15,4 +15,13 @@ const fetchCommentsByPostID = async (postId) => {
     }
   };
   
-  export default fetchCommentsByPostID;
+  //delete post by id
+  export const deletePostByID = async (postId) => {
+      const response = await fetch(`https://dummyjson.com/posts/${postId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        return response; 
+      } 
+  };
