@@ -9,9 +9,7 @@ const AddModel: React.FC<IAddModelProps> = (
   ) => {
 
     const [post, setPost] = useState({ title: '', body: '', tags: '' });
-    // const [title, setTitle] = useState('');
-    // const [body, setBody] = useState('');
-    // const [tags, setTags] = useState('');
+
 
     const addBlogRequest= async () => {
       const postReq={
@@ -44,18 +42,12 @@ const AddModel: React.FC<IAddModelProps> = (
       addBlogRequest()
       // Reset the form fields
       setPost({ title: '', body: '', tags: '' })
-      // setTitle('');
-      // setBody('');
-      // setTags('');
       props.setOpenModal(false);
     };
 
   function handleReset() {
      // Reset the form fields
      setPost({ title: '', body: '', tags: '' })
-    //  setTitle('');
-    //  setBody('');
-    //  setTags('');
   }
 
     return (
