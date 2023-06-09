@@ -1,5 +1,5 @@
 .blog-card {
-  width: 20.5rem;
+  width: 15.5rem;
   height: 12.5rem;
   text-align: center;
   background-color:var(--offwhite);
@@ -7,11 +7,10 @@
   padding: 1.25rem;
   border-radius: 1rem;
   box-shadow: 0rem 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-  float: left;
 }
 
 .blog-card:hover {
-  width: 20.5rem;
+  width: 15.5rem;
   height: 12.5rem;
   text-align: center;
   background-color:var(--hover);
@@ -28,15 +27,36 @@ h1{
 }
 
 .blog-title{
+  margin-top: 2rem;
   height: 5rem;
   overflow: hidden;
 }
 
 .blog-description {
-  margin-top: 1rem;
-  white-space: nowrap; 
+  margin-top: 2rem;
+  white-space:nowrap; 
+  height: 3rem;
   overflow: hidden;
   text-overflow: ellipsis; 
+}
+
+.delete-icon{
+  display: flex;
+  justify-content: center;
+}
+
+.delete-icon button{
+  background: none;
+color: inherit;
+border: none;
+padding: 0;
+font: inherit;
+cursor: pointer;
+outline: inherit;
+}
+
+.delete-icon button :hover{
+  color: var(--red);
 }
 
 
