@@ -17,7 +17,7 @@ const BlogCard : React.FC<IBlogCardProps> = ({
 
   return (
     <div className="blog-card">
-            <div className="blog-author-with-delete-icon">
+            <div className="delete-icon">
             <Tooltip title="Deletes the post" placement="top">
         <button onClick={()=>{
           handleDeleteClick(id)}}>
