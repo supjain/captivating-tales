@@ -5,13 +5,17 @@ import About from '../pages/About/About';
 import Contacts from '../pages/Contacts/Contacts';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import { useState } from 'react';
+import AddModel from '../components/AddModel/AddModel';
+import CustomeAlert from '../components/Alert/CustomeAlert';
 
-const routes = () =>{
-
+const RouteBlogs = () =>{
+  const [modalOpen, setModalOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
     return(
         <div className='app-routes'> 
-         <Router>
-        <Header/>
+         {modalOpen?<AddModel setOpenModal={setModalOpen} setOpen={setOpen}/>: <Router>
+        <Header setOpenModal={setModalOpen}/>
           <Routes>
            <Route path="/"  element={<HomePage/>}/>
            <Route path="/blogdetails/:id" element={<BlogDetails/>}/>
@@ -19,10 +23,12 @@ const routes = () =>{
            <Route path="/contacts" element={<Contacts/>}/>
          </Routes>
          <Footer/>
-     </Router>
+     </Router>}
+         {open && <CustomeAlert setOpen={setOpen} open={open}/>}
+        
      </div>
     );
 
 }
 
-export default routes;
+export default RouteBlogs;

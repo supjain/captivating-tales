@@ -1,11 +1,13 @@
 
 .header-box{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--grey);
     padding:1rem 0 1rem 2rem; 
     position: fixed;
-    top: 0;
     width: 100%;
+    top: 0;
 }
 
 .home-link{
@@ -13,4 +15,19 @@
     color:var(--white);
     font-weight: bolder;
     font-size: larger;
+}
+
+.add-post-logo:hover {
+    background-color:var(--hover);
+   
+  }
+
+.add-post-logo{
+    height: 1.7rem;
+    width: 1.7rem;
+    border-color: 1rem solid var(--black) ;
+}
+
+.header-right{
+    padding-right: 4rem;
 }

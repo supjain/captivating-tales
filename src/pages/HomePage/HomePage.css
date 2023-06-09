@@ -8,13 +8,11 @@
 
 
 .home-page-blogs{
-  margin-top: 8rem;
+  margin-top: 6rem;
   display: grid;
-  grid-template-columns: 24rem 24rem 24rem 24rem ;
-  grid-row-gap: 2rem;
-  grid-column-gap:2rem;
-  justify-content: center;
-  align-items: center;
+  grid-template-columns: 20rem 20rem 20rem 20rem ;
+  grid-row-gap: 1rem;
+  grid-column-gap:1rem;
 }
 
 .home-page-eror{
