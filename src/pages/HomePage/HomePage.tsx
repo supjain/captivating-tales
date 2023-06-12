@@ -11,15 +11,17 @@ import { Blog } from "../../Types/BlogCardType.types";
 
 import "../../components/CircularProgress/CircularProgress";
 import "./HomePage.css";
+import Search from "../../components/Search/Search";
 
 const HomePage = () => {
+
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-
-  //For Toast mesage
-  const [open, setOpen] = useState<boolean>(false);
+  const [isHomeFetch,setIsHomeFetch]=useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);//For Toast mesage
+  
   const handleClose = (
     event: React.SyntheticEvent | Event,
     reason?: string
@@ -34,10 +36,11 @@ const HomePage = () => {
   useEffect(() => {
     try {
       fetchPosts();
+      setIsHomeFetch(true)
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [isHomeFetch]);
 
   const fetchPosts = async () => {
     const data = await fetch(POST_URI.concat("&select=title,body,userId"));
@@ -94,6 +97,9 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
+      <div className="home-page-search">
+      <Search setBlogs={setBlogs} setIsHomeFetch={setIsHomeFetch}/>
+      </div>
       <div className="home-page-blogs">
         {blogs ? (
           blogs.map((blog) => {
