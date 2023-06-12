@@ -19,17 +19,18 @@ const Search : React.FC<ISearchProps>= (props:ISearchProps) => {
   const fetchPosts = async () => {
     if(searchTxt!==""){
     const data = await fetch(GET_URI.concat("/search?q=").concat(searchTxt));
+    props.setIsHomeFetch(false)
     const postDetails = await data.json();
     props.setBlogs(postDetails.posts);
     }else{
-      props.setIsHomeFetch(false)
+      props.setIsHomeFetch(true)
     }
   };
 
 
   function handleClear(): void {
     setSearchTxt('');
-    props.setIsHomeFetch(false)
+    props.setIsHomeFetch(true)
     console.log("searchTxt: "+searchTxt)
   }
 
