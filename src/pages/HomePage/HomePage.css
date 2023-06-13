@@ -1,18 +1,28 @@
+
 .home-page {
-  display: flex;
-  justify-content: center;
-  overflow: auto;
-  margin-top: 0;
-  margin-bottom: 8rem;
-}
-.home-page-blogs {
-  margin-top: 8rem;
   display: grid;
-  grid-template-columns: 24rem 24rem 24rem 24rem;
-  grid-row-gap: 2rem;
-  grid-column-gap: 2rem;
+  grid-template-rows: auto;
   justify-content: center;
-  align-items: center;
+  margin-top:4rem;
+  margin-bottom: 8rem;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.home-page-search{
+  position: relative;
+  float: none;
+
+}
+
+.home-page-blogs{
+margin-top: 1.5rem;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+overflow-y: scroll;
+ 
 }
 .home-page-eror {
   justify-content: center;

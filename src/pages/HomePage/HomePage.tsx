@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -8,18 +8,23 @@ import BlogCard from "../../components/BlogCard/BlogCard";
 import { POST_URI } from "../../utils/Constants";
 import { deletePostByID } from "../../utils/apis/api";
 import { Blog } from "../../Types/BlogCardType.types";
+import Search from "../../components/Search/Search";
 
 import "../../components/CircularProgress/CircularProgress";
 import "./HomePage.css";
 
+
 const HomePage = () => {
+
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [isHomeFetch,setIsHomeFetch]=useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);//For Toast message
 
-  //For Toast mesage
-  const [open, setOpen] = useState<boolean>(false);
+  const divRef = useRef(null);
+  
   const handleClose = (
     event: React.SyntheticEvent | Event,
     reason?: string
@@ -33,11 +38,12 @@ const HomePage = () => {
   //For Toast message
   useEffect(() => {
     try {
+      if(isHomeFetch)
       fetchPosts();
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [isHomeFetch]);
 
   const fetchPosts = async () => {
     const data = await fetch(POST_URI.concat("&select=title,body,userId"));
@@ -57,6 +63,7 @@ const HomePage = () => {
 
   const fetchMorePosts = async () => {
     setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 300));
     try {
       const data = await fetch(
         `${POST_URI}&page=${page}&select=title,body,userId`
@@ -75,26 +82,23 @@ const HomePage = () => {
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const handleScroll = () => {
-    if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
-      !isLoading &&
-      hasMore
-    ) {
-      fetchMorePosts();
+    const container = divRef.current;
+    if (container) {
+      const { scrollTop, scrollHeight, clientHeight } = container;
+      if ((scrollTop + clientHeight >= scrollHeight) && !isLoading && hasMore && isHomeFetch) {
+        fetchMorePosts();
+      }
     }
   };
 
   return (
     <div className="home-page">
-      <div className="home-page-blogs">
+      <div className="home-page-search">
+      <Search setBlogs={setBlogs} setIsHomeFetch={setIsHomeFetch}/>
+      </div>
+      <div ref={divRef} className="home-page-blogs" onScroll={handleScroll}>
         {blogs ? (
           blogs.map((blog) => {
             return (
