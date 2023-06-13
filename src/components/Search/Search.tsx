@@ -1,10 +1,12 @@
-import './Search.css'
 import searchIcon from '../../assets/search.svg'
 import closeSearchIcon from '../../assets/close.svg'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { ISearchProps } from '../../Types/SearchType.types'
 import { GET_URI } from '../../utils/Constants'
-const Search : React.FC<ISearchProps>= (props:ISearchProps) => {
+
+import './Search.css'
+
+const Search : React.FC<ISearchProps>= ({setBlogs, setIsHomeFetch}:ISearchProps) => {
 
   const[searchTxt,setSearchTxt]=useState('');
 
@@ -19,18 +21,18 @@ const Search : React.FC<ISearchProps>= (props:ISearchProps) => {
   const fetchPosts = async () => {
     if(searchTxt!==""){
     const data = await fetch(GET_URI.concat("/search?q=").concat(searchTxt));
-    props.setIsHomeFetch(false)
+    setIsHomeFetch(false)
     const postDetails = await data.json();
-    props.setBlogs(postDetails.posts);
+    setBlogs(postDetails.posts);
     }else{
-      props.setIsHomeFetch(true)
+      setIsHomeFetch(true)
     }
   };
 
 
   function handleClear(): void {
     setSearchTxt('');
-    props.setIsHomeFetch(true)
+    setIsHomeFetch(true)
     console.log("searchTxt: "+searchTxt)
   }
 
